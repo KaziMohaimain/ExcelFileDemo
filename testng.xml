@@ -1,6 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="ECommerceTestSuite" verbose="1" >
+    <test name="AuthenticationTest">
+        <classes>
+            <class name="testCases.authentication.SignUpTest"/>
+            <class name="testCases.authentication.SignInTest"/>
+        </classes>
+    </test>
+
     <test name="basicTest" >
         <classes>
             <class name="testCases.BaseTest"/>
