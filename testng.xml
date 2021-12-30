@@ -3,6 +3,7 @@
 <suite name="ECommerceTestSuite" verbose="1" >
     <test name="AuthenticationTest">
         <classes>
+            <class name="testCases.BaseTest"/>
             <class name="testCases.authentication.SignUpTest"/>
             <class name="testCases.authentication.SignInTest"/>
         </classes>
@@ -11,7 +12,6 @@
     <test name="basicTest" >
         <classes>
             <class name="testCases.BaseTest"/>
-            <class name="testCases.LoginTest" />
             <class name="testCases.ProductTest" />
             <class name="testCases.OrderTest" />
         </classes>

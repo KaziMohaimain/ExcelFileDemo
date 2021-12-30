@@ -12,25 +12,38 @@ import java.util.Iterator;
 
 public class XMLReader
 {
-    public static Iterator<Row> loadData(String filePath)
+    public static Iterator<Row> getRows(String filePath)
     {
         Iterator<Row> itr = null;
-        File file = new File(filePath);   //creating a new file instance
+        File file = new File(filePath);
         try {
-            //obtaining bytes from the file
             FileInputStream fis = new FileInputStream(file);
-
-            //creating Workbook instance that refers to .xlsx file
             XSSFWorkbook wb = new XSSFWorkbook(fis);
             XSSFSheet sheet = wb.getSheetAt(0);
-
-            sheet.getRow(5);
-            itr = sheet.iterator();    //iterating over excel file
+            itr = sheet.iterator();
             itr.next();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         return itr;
+    }
+
+    public static Row getRow(String filePath, int rowIndex)
+    {
+        Row row = null;
+        File file = new File(filePath);
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            XSSFWorkbook wb = new XSSFWorkbook(fis);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            row = sheet.getRow(rowIndex);
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+        return row;
     }
 }
