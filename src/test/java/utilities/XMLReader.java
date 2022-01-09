@@ -1,5 +1,6 @@
 package utilities;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -8,36 +9,88 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class XMLReader
 {
-    public static Iterator<Row> getRows(String filePath)
+    public static String basePath = "src/test/Data/";
+
+    public static List<List<String>> getRows(String filePath)
     {
-        Iterator<Row> itr = null;
-        File file = new File(filePath);
+        List<List<String>> datas = new ArrayList<>();
+        File file = new File(basePath + filePath);
         try {
             FileInputStream fis = new FileInputStream(file);
             XSSFWorkbook wb = new XSSFWorkbook(fis);
             XSSFSheet sheet = wb.getSheetAt(0);
-            itr = sheet.iterator();
+
+            Iterator<Row> itr = sheet.iterator();
+
+            //Skip the first row (Header):
+            itr.next();
+
+            while(itr.hasNext())
+            {
+                List<String> rowData = new ArrayList<>();
+
+                Row row = itr.next();
+                Iterator<Cell> rowItr = row.iterator();
+
+                while(rowItr.hasNext())
+                {
+                    Cell cell = rowItr.next();
+                    rowData.add(cell.getStringCellValue());
+                }
+
+                datas.add(rowData);
+            }
             itr.next();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return itr;
+        return datas;
     }
 
-    public static Row getRow(String filePath, int rowIndex)
+    public static List<String> getRow(String filePath, int rowIndex)
     {
-        Row row = null;
-        File file = new File(filePath);
+        List<String> datas = new ArrayList<>();
+
+        File file = new File(basePath + filePath);
         try {
             FileInputStream fis = new FileInputStream(file);
             XSSFWorkbook wb = new XSSFWorkbook(fis);
             XSSFSheet sheet = wb.getSheetAt(0);
-            row = sheet.getRow(rowIndex);
+            Row row = sheet.getRow(rowIndex);
+
+            Iterator<Cell> itr = row.iterator();
+
+            while(itr.hasNext())
+            {
+                Cell cell = itr.next();
+                datas.add(cell.getStringCellValue());
+            }
+
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+        return datas;
+    }
+
+    public static int getRowCount(String filePath)
+    {
+        int row = 0;
+        File file = new File(basePath + filePath);
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            XSSFWorkbook wb = new XSSFWorkbook(fis);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            row = sheet.getLastRowNum();
             fis.close();
         } catch (IOException e) {
             e.printStackTrace();

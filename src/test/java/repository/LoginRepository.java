@@ -7,7 +7,7 @@ import utilities.XMLReader;
 import java.util.*;
 
 public class LoginRepository {
-
+/*
     public static List<LoginData> getAll()
     {
         List<LoginData> list = new ArrayList<>();
@@ -37,5 +37,5 @@ public class LoginRepository {
 
         return new LoginData(name,email,password,confirmPassword);
     }
-
+*/
 }
