@@ -12,14 +12,14 @@ public class BaseTest
     public void openBrowser()
     {
         System.out.println("<<<<<<openBrowser>>>>>>");
-        Driver.getInstance().init();
+        // Nothing to do for now
     }
 
     @AfterSuite
     public void closeBrowser()
     {
         System.out.println("<<<<<<closeBrowser>>>>>>");
-        Driver.getInstance().finalise();
+        Driver.getInstance().quit();
     }
 
 }

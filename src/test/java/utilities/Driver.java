@@ -9,12 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
-    ReadConfig readconfig=new ReadConfig();
-    public String baseURL=readconfig.getApplicationURL();
-    public String username=readconfig.getUsername();
-    public String password=readconfig.getPassword();
-
-
     private static Driver instance;
 
     public static Driver getInstance()
@@ -22,6 +16,7 @@ public class Driver {
         if(instance == null)
         {
             instance = new Driver();
+            instance.init();
         }
 
         return instance;
@@ -33,19 +28,16 @@ public class Driver {
         return driver;
     }
 
-    @BeforeClass
-    public void init()
+    private void init()
     {
-        System.setProperty("webdriver.chrome.driver",readconfig.getChromePath());
+        System.setProperty("webdriver.chrome.driver", new ReadConfig().getChromePath());
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        driver.get(baseURL);
     }
 
-    @AfterClass
-    public void finalise()
+    public void quit()
     {
-        //driver.quit();
+        driver.quit();
     }
 }
