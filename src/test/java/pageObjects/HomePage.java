@@ -1,15 +1,19 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
+import utilities.ReadConfig;
 
 import java.util.List;
 
 public class HomePage {
+
+    WebDriver driver = Driver.getInstance().getDriver();
 
     WebElement accountOption;
 //    @FindBy(xpath = "//*[@id=\"navbarSupportedContent\"]/ul/li[2]/div/a[3]")
@@ -21,12 +25,19 @@ public class HomePage {
     WebElement signUpOption;
 
     public void initialize() {
-        List<WebElement> options = Driver.getInstance().getDriver().findElements(By.cssSelector("#navbarSupportedContent #navbarDropdown"));
+
+    //For home:
+        //driver.get("https://infallible-swartz-b50174.netlify.app/");
+    //For office:
+        driver.get(new ReadConfig().getApplicationURL());
+
+
+        List<WebElement> options = driver.findElements(By.cssSelector("#navbarSupportedContent #navbarDropdown"));
         accountOption = options.get(1);
         //PageFactory.initElements(Driver.getInstance().getDriver(), this);
 
-        loginOption = Driver.getInstance().getDriver().findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/ul/li[2]/div/a[3]"));
-        signUpOption = Driver.getInstance().getDriver().findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/ul/li[2]/div/a[4]"));
+        loginOption = driver.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/ul/li[2]/div/a[3]"));
+        signUpOption = driver.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/ul/li[2]/div/a[4]"));
     }
 
     public void goToSignUpPage() {

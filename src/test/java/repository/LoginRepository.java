@@ -1,6 +1,5 @@
 package repository;
 
-import formModels.LoginData;
 import org.apache.poi.ss.usermodel.Row;
 import utilities.XMLReader;
 
