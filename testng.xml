@@ -1,11 +1,18 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="ECommerceTestSuite" verbose="1" >
-    <test name="SettingsPanelTest">
+    <test name="AuthenticationTest">
         <classes>
             <class name="testCases.BaseTest"/>
-            <class name="testCases.SettingsPanel"/>
+            <class name="testCases.authentication.SignInTest"/>
         </classes>
     </test>
 
+    <test name="basicTest" >
+        <classes>
+            <class name="testCases.BaseTest"/>
+            <class name="testCases.ProductTest" />
+            <class name="testCases.OrderTest" />
+        </classes>
+    </test>
 </suite>

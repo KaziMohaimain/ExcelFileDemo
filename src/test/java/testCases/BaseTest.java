@@ -4,6 +4,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import pageObjects.LoginPage;
 import utilities.Driver;
 
 public class BaseTest
@@ -21,5 +22,4 @@ public class BaseTest
         System.out.println("<<<<<<closeBrowser>>>>>>");
         Driver.getInstance().finalise();
     }
-
 }

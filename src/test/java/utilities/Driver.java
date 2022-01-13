@@ -33,6 +33,7 @@ public class Driver {
         return driver;
     }
 
+    @BeforeClass
     public void init()
     {
         System.setProperty("webdriver.chrome.driver",readconfig.getChromePath());
@@ -42,6 +43,7 @@ public class Driver {
         driver.get(baseURL);
     }
 
+    @AfterClass
     public void finalise()
     {
         //driver.quit();
