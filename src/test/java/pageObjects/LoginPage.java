@@ -8,13 +8,11 @@ import utilities.ReadConfig;
 
 public class LoginPage
 {
-    WebElement loginOption;
+    WebDriver driver = Driver.getInstance().getDriver();
 
-    public static void goToLoginPage(String baseURL)
+    public void login(String userName, String password)
     {
-        LoginPage loginPage = new LoginPage();
-
-        WebDriver driver = Driver.getInstance().getDriver();
-        driver.get(baseURL);
+        driver.findElement(By.name("username")).sendKeys(userName);
+        driver.findElement(By.name("btnLogin")).click();
     }
 }

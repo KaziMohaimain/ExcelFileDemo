@@ -15,12 +15,9 @@ public class SignInTest
     public void login()
     {
         System.out.println("<<<<<<login>>>>>>");
-        WebDriver driver = Driver.getInstance().getDriver();
-
-        LoginPage.goToLoginPage("http://localhost/savolution.net/sadmin/");
-
-        driver.findElement(By.name("username")).sendKeys("User.786");
-        driver.findElement(By.name("btnLogin")).click();
+        Driver.getInstance().getDriver().get("http://localhost/savolution.net/sadmin/");
+        LoginPage loginPage = new LoginPage();
+        loginPage.login("User.786", "your pass");
     }
 
     public void logout()

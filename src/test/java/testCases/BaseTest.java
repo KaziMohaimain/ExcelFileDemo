@@ -13,7 +13,6 @@ public class BaseTest
     public void openBrowser()
     {
         System.out.println("<<<<<<openBrowser>>>>>>");
-        Driver.getInstance().init();
     }
 
     @AfterSuite
