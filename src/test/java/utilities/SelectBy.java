@@ -1,6 +1,6 @@
 package utilities;
 
-public enum KeyType {
+public enum SelectBy {
     XPATH,
     NAME,
     ID,

@@ -1,12 +1,7 @@
 package pageObjects;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Driver;
-import utilities.KeyType;
-
-import java.util.List;
+import utilities.SelectBy;
 
 public class PurchaseInfoPage
 {
@@ -14,13 +9,12 @@ public class PurchaseInfoPage
 
     public void addNewPurchase()
     {
-        driver.pleaseWait(30);
-        WebElement inputFieldsContainer = driver.getElement("/html/body/div[2]/div/div/div/form", KeyType.XPATH);
-        List<WebElement> fields = driver.getElements("input", KeyType.TAG_NAME, inputFieldsContainer);
-        int i = 1;
-        for (WebElement field : fields) {
-            field.sendKeys("field " + i);
-        }
+        driver.switchToFrame(0);
 
+        driver.findAndClick("btnNew", SelectBy.ID);
+        driver.findAndFill("supplier_info", SelectBy.ID, "Kazi Habib");
+        // To do
+
+        driver.switchToRootFrame();
     }
 }

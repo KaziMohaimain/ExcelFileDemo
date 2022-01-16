@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -37,50 +37,73 @@ public class Driver {
     private void init()
     {
         System.setProperty("webdriver.chrome.driver", new ReadConfig().getChromePath());
-        driver=new ChromeDriver();
+        ChromeOptions capability = new ChromeOptions();
+        capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        capability.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,true);
+        driver=new ChromeDriver(capability);
         driver.manage().window().maximize();
         pleaseWait(15);
     }
 
     public void shiftToElement(WebElement element)
     {
-        WebDriverWait wait = new WebDriverWait(driver,30);
+        WebDriverWait wait = new WebDriverWait(driver,60);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         Actions action = new Actions(driver);
         action.moveToElement(element).perform();
     }
 
-    public void shiftToElement(String key, KeyType keyType)
+    public void shiftToElement(String selector, SelectBy type)
     {
-        WebElement element = getElement(key, keyType);
+        WebElement element = getElement(selector, type);
         shiftToElement(element);
     }
 
-    public void shiftAndClick(String key, KeyType keyType)
+    public void shiftAndClick(String selector, SelectBy type)
     {
-        WebElement element = getElement(key, keyType);
+        WebElement element = getElement(selector, type);
         shiftToElement(element);
         element.click();
     }
 
-
-    public List<WebElement> getElements(String key, KeyType keyType)
+    public void findAndClick(String selector, SelectBy type)
     {
-        By by = getQueryBy(key, keyType);
+        WebElement element = getElement(selector, type);
+        element.click();
+    }
+
+    public void findAndFill(String selector, SelectBy type, String data)
+    {
+        WebElement element = getElement(selector, type);
+        element.sendKeys(data);
+    }
+
+    public List<WebElement> getElements(String selector, SelectBy type)
+    {
+        By by = getQueryBy(selector, type);
         return driver.findElements(by);
     }
-    public List<WebElement> getElements(String key, KeyType keyType, WebElement parent)
+    public List<WebElement> getElements(String selector, SelectBy type, WebElement parent)
     {
-        By by = getQueryBy(key, keyType);
+        By by = getQueryBy(selector, type);
         return parent.findElements(by);
     }
 
-    public WebElement getElement(String key, KeyType keyType)
+    public WebElement getElement(String selector, SelectBy type)
     {
-        By by = getQueryBy(key, keyType);
+        By by = getQueryBy(selector, type);
         return driver.findElement(by);
     }
 
+    public void switchToFrame(int index)
+    {
+        driver.switchTo().frame(index);
+    }
+
+    public void switchToRootFrame()
+    {
+        driver.switchTo().defaultContent();
+    }
 
     public void quit()
     {
@@ -92,10 +115,10 @@ public class Driver {
         driver.manage().timeouts().implicitlyWait(duration, TimeUnit.SECONDS);
     }
 
-    public By getQueryBy(String key, KeyType keyType)
+    public By getQueryBy(String key, SelectBy type)
     {
         By by = null;
-        switch(keyType) {
+        switch(type) {
             case XPATH:
                 by = By.xpath(key);
                 break;
