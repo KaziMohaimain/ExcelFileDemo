@@ -13,6 +13,7 @@ import java.util.List;
 
 public class SignUpTest
 {
+    /*
     @Test
     public void register()
     {
@@ -25,4 +26,6 @@ public class SignUpTest
         List<String> data = XMLReader.getRow("signUpData.xlsx", 1);
         signUpPage.inputData(data);
     }
+
+     */
 }

@@ -4,17 +4,14 @@
     <test name="AuthenticationTest">
         <classes>
             <class name="testCases.BaseTest"/>
-            <class name="testCases.authentication.SignUpTest"/>
-            <class name="testCases.authentication.SignInTest"/>
+            <class name="testCases.authentication.InitialAuthenticationTest"/>
         </classes>
     </test>
 
-    <test name="basicTest" >
+    <test name="purchaseModuleTest" >
         <classes>
-            <class name="testCases.InitialAuthenticationTest"/>
             <class name="testCases.BaseTest"/>
-            <class name="testCases.ProductTest" />
-            <class name="testCases.OrderTest" />
+            <class name="testCases.operationManagement.purchaseMgt.PurchaseInformation"/>
         </classes>
     </test>
 </suite>

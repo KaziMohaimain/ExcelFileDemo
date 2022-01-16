@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 public class OrderTest 
 {
+    /*
     @BeforeClass
     public void beforeOrderClass()
     {
@@ -35,5 +36,7 @@ public class OrderTest
     {
         System.out.println("<<<<<<afterOrderClass>>>>>>");
     }
+
+     */
     
 }

@@ -8,6 +8,7 @@ import utilities.Driver;
 
 public class SignInTest
 {
+    /*
     @Test
     public void login()
     {
@@ -21,4 +22,6 @@ public class SignInTest
         System.out.println("<<<<<<logOut>>>>>>");
         WebDriver driver = Driver.getInstance().getDriver();
     }
+
+     */
 }

@@ -4,6 +4,7 @@ import org.testng.annotations.*;
 
 public class ProductTest
 {
+    /*
     @BeforeClass
     public void beforeProductClass()
     {
@@ -33,4 +34,6 @@ public class ProductTest
     {
         System.out.println("<<<<<<afterProductClass>>>>>>");
     }
+
+     */
 }
