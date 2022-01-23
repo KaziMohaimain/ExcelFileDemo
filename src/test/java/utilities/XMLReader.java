@@ -1,6 +1,7 @@
 package utilities;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -70,7 +71,10 @@ public class XMLReader
             while(itr.hasNext())
             {
                 Cell cell = itr.next();
-                datas.add(cell.getStringCellValue());
+                DataFormatter formatter = new DataFormatter();
+                String val = formatter.formatCellValue(cell);
+
+                datas.add(val);
             }
 
             fis.close();
