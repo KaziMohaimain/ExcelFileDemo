@@ -8,10 +8,15 @@
         </classes>
     </test>
 
-    <test name="purchaseModuleTest" >
+    <test name="PurchaseModuleTest" >
         <classes>
-            <class name="testCases.BaseTest"/>
             <class name="testCases.operationManagement.purchaseMgt.PurchaseInformation"/>
+        </classes>
+    </test>
+
+    <test name="SalesModuleTest" >
+        <classes>
+            <class name="testCases.operationManagement.salesMgt.SalesInformation"/>
         </classes>
     </test>
 </suite>

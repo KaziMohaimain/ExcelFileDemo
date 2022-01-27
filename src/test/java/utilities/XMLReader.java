@@ -42,12 +42,12 @@ public class XMLReader
                 while(rowItr.hasNext())
                 {
                     Cell cell = rowItr.next();
-                    rowData.add(cell.getStringCellValue());
+                    DataFormatter formatter = new DataFormatter();
+                    String val = formatter.formatCellValue(cell);
+                    rowData.add(val);
                 }
-
                 datas.add(rowData);
             }
-            itr.next();
         } catch (IOException e) {
             e.printStackTrace();
         }
