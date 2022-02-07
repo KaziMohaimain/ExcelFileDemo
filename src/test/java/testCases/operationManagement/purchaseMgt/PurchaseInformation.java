@@ -15,10 +15,10 @@ public class PurchaseInformation
     @Test
     public void purchaseInfoTest()
     {
-//        NavigationBar navigationBar = new NavigationBar();
-//        navigationBar.openPurchaseInfo();
-//
-//        PurchaseInfoPage purchaseInfoPage = new PurchaseInfoPage();
-//        purchaseInfoPage.addNewPurchase();
+        NavigationBar navigationBar = new NavigationBar();
+        navigationBar.openPurchaseInfo();
+
+        PurchaseInfoPage purchaseInfoPage = new PurchaseInfoPage();
+        purchaseInfoPage.addNewPurchase();
     }
 }

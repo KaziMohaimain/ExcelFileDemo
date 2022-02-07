@@ -10,10 +10,13 @@ public class SalesInformation
     @Test
     public void salesInfoTest()
     {
+        /*
         NavigationBar navigationBar = new NavigationBar();
         navigationBar.openSalesInfo();
 
         SalesInfoPage salesInfoPage = new SalesInfoPage();
         salesInfoPage.addNewSales();
+
+         */
     }
 }

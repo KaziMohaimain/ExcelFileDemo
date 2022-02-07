@@ -10,15 +10,11 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest
 {
-    ReadConfig readconfig = new ReadConfig();
-    WebDriver driver = Driver.getInstance().getDriver();
 
     @BeforeSuite
     public void openBrowser()
     {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(readconfig.getApplicationURL());
-
+        Driver.getInstance().loadApplicationURL();
         System.out.println("<<<<<<openBrowser>>>>>>");
         // Nothing to do for now
     }

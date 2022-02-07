@@ -13,15 +13,8 @@ import java.util.List;
 
 public class HomePage {
 
-    WebDriver driver = Driver.getInstance().getDriver();
-
     public void initialize() {
 
-
-        driver.get(new ReadConfig().getApplicationURL());
-
-
-        List<WebElement> options = driver.findElements(By.cssSelector("#navbarSupportedContent #navbarDropdown"));
 
     }
 
